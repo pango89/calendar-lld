@@ -20,7 +20,7 @@ namespace Calendar
             foreach (var userId in userIds)
             {
                 var user = userService.GetUserById(userId);
-                if (!this.userService.IsWithinWorkingHours(user, start, end))
+                if (!UserService.IsWithinWorkingHours(user, start, end))
                     throw new UserNotFreeException();
 
                 var (slots, isFree) = GetAvailableSlotsForUser(user, start, end);
@@ -38,7 +38,7 @@ namespace Calendar
 
                 foreach (var user in team.Users)
                 {
-                    if (!this.userService.IsWithinWorkingHours(user, start, end))
+                    if (!UserService.IsWithinWorkingHours(user, start, end))
                         continue;
 
                     var (slots, isFree) = GetAvailableSlotsForUser(user, start, end);

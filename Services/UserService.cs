@@ -17,8 +17,8 @@ namespace Calendar
             this.userRepository.AddUser(user);
             return user;
         }
-        public void SetTeam(User user, Team team) => this.userRepository.AddUser(user);
-        public bool IsWithinWorkingHours(User user, DateTime start, DateTime end)
+        public void SetTeam(User user, Team team) => this.userRepository.SetTeam(user.Id, team);
+        public static bool IsWithinWorkingHours(User user, DateTime start, DateTime end)
         {
             var s1 = TimeOnly.FromDateTime(user.WorkingHours.Start);
             var s2 = TimeOnly.FromDateTime(start);
